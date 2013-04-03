@@ -41,7 +41,7 @@ int FbDevNativeWindow::setSwapInterval(int interval) {
     return 0;
 }
 
-int FbDevNativeWindow::dequeueBuffer(BaseNativeWindowBuffer **buffer){
+int FbDevNativeWindow::dequeueBuffer_DEPRECATED(BaseNativeWindowBuffer **buffer){
     TRACE("%s\n",__PRETTY_FUNCTION__);
     *buffer = m_buffers[m_tailbuffer];
     TRACE("dequeueing buffer %i %p",m_tailbuffer, m_buffers[m_tailbuffer]);
@@ -51,12 +51,12 @@ int FbDevNativeWindow::dequeueBuffer(BaseNativeWindowBuffer **buffer){
     return NO_ERROR;
 }
 
-int FbDevNativeWindow::lockBuffer(BaseNativeWindowBuffer* buffer){
+int FbDevNativeWindow::lockBuffer_DEPRECATED(BaseNativeWindowBuffer* buffer){
     TRACE("%s\n",__PRETTY_FUNCTION__);
     return NO_ERROR;
 }
 
-int FbDevNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer){
+int FbDevNativeWindow::queueBuffer_DEPRECATED(BaseNativeWindowBuffer* buffer){
     FbDevNativeWindowBuffer* buf = static_cast<FbDevNativeWindowBuffer*>(buffer);
     m_frontbuffer++;
     if(m_frontbuffer == FRAMEBUFFER_PARTITIONS)
@@ -66,9 +66,21 @@ int FbDevNativeWindow::queueBuffer(BaseNativeWindowBuffer* buffer){
     return NO_ERROR;
 }
 
-int FbDevNativeWindow::cancelBuffer(BaseNativeWindowBuffer* buffer){
+int FbDevNativeWindow::cancelBuffer_DEPRECATED(BaseNativeWindowBuffer* buffer){
     TRACE("%s\n",__PRETTY_FUNCTION__);
     return 0;
+}
+
+int FbDevNativeWindow::dequeueBuffer(BaseNativeWindowBuffer **buffer, int *fenceFd)
+{
+}
+
+int FbDevNativeWindow::queueBuffer(BaseNativeWindowBuffer *buffer, int fenceFd)
+{
+}
+
+int FbDevNativeWindow::cancelBuffer(BaseNativeWindowBuffer *buffer, int fenceFd)
+{
 }
 
 unsigned int FbDevNativeWindow::width() const {
