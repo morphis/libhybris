@@ -7,10 +7,7 @@ libEGL_la_SOURCES = \
 	ws_fbdev.cpp \
 	nativewindowbase.cpp \
 	fbdev_window.cpp \
-	fdpass.c \
-	native_handle.c \
-	offscreen_window.cpp \
-	offscreen_window_buffer.cpp
+	native_handle.c
 libEGL_la_CFLAGS = -I$(top_srcdir)/include
 if WANT_MESA
 libEGL_la_CFLAGS += -DLIBHYBRIS_WANTS_MESA_X11_HEADERS
@@ -33,7 +30,6 @@ libEGL_la_LDFLAGS = \
 eglincludedir = $(includedir)/EGL
 eglinclude_HEADERS = \
 	eglhybris.h \
-	offscreen_window.h \
 	fbdev_window.h \
 	nativewindowbase.h \
 	support.h
