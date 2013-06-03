@@ -7,7 +7,8 @@ bin_PROGRAMS = \
 	test_sf \
 	test_input \
 	test_camera \
-	test_gps
+	test_gps \
+	test_properties
 
 test_egl_SOURCES = test_egl.c
 test_egl_CFLAGS = \
@@ -85,3 +86,10 @@ test_gps_LDFLAGS = -pthread
 test_gps_LDADD =  \
 	$(top_builddir)/common/libhybris-common.la \
 	$(top_builddir)/hardware/libhardware.la
+
+test_properties_SOURCES = test_properties.c
+test_properties_CFLAGS = -pthread \
+	-I$(top_srcdir)/include
+test_properties_LDFLAGS = -pthread
+test_properties_LDADD = \
+	$(top_builddir)/common/libhybris-common.la
