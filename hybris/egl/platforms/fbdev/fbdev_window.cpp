@@ -15,6 +15,7 @@
  */
 
 #include "fbdev_window.h"
+#include "logging.h"
 
 #include <errno.h>
 #include <assert.h>
@@ -24,6 +25,8 @@
 #include <android/version.h>
 
 #define FRAMEBUFFER_PARTITIONS 2
+
+#define TRACE(message, ...) HYBRIS_DEBUG_LOG(EGL, message, ##__VA_ARGS__)
 
 static pthread_cond_t _cond = PTHREAD_COND_INITIALIZER;
 static pthread_mutex_t _mutex = PTHREAD_MUTEX_INITIALIZER;

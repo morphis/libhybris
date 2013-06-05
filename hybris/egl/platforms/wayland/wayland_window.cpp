@@ -29,6 +29,9 @@
 #include "wayland-egl-priv.h"
 #include <assert.h>
 
+#include "logging.h"
+#define TRACE(message, ...) HYBRIS_DEBUG_LOG(EGL, message, ##__VA_ARGS__)
+
 void WaylandNativeWindow::lock()
 {
 	pthread_mutex_lock(&this->mutex);	
